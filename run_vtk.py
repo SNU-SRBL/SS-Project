@@ -33,8 +33,8 @@ def get_filename() -> str:
     filename = os.path.join('sensor', args.filename)
     return filename
 
-def create_gripper_actor(colors: vtkNamedColors) -> vtkActor:
-    """Create an actor for the STL gripper model."""
+def create_stl_actor(colors: vtkNamedColors) -> vtkActor:
+    """Create an actor for the sensor STL model."""
     filename = get_filename()
 
 
@@ -44,20 +44,20 @@ def create_gripper_actor(colors: vtkNamedColors) -> vtkActor:
     mapper = vtkPolyDataMapper()
     mapper.SetInputConnection(reader.GetOutputPort())
 
-    actor_g = vtkActor()
-    actor_g.SetMapper(mapper)
-    prop = actor_g.GetProperty()
+    actor_stl = vtkActor()
+    actor_stl.SetMapper(mapper)
+    prop = actor_stl.GetProperty()
     prop.SetDiffuse(0.8)
     prop.SetDiffuseColor(colors.GetColor3d('DimGray'))
     prop.SetSpecular(0.3)
     prop.SetSpecularPower(60.0)
     prop.SetOpacity(0.7) # Opacity
 
-    actor_g.SetPosition(0, 0, 0)
-    actor_g.SetOrientation(-90, 0, 0) # 0, 90, 0
-    actor_g.SetScale(1.0, 1.0, 1.0) # Adjust the scale
+    actor_stl.SetPosition(0, 0, 0)
+    actor_stl.SetOrientation(-90, 0, 0) # 0, 90, 0
+    actor_stl.SetScale(1.0, 1.0, 1.0) # Adjust the scale
 
-    return actor_g
+    return actor_stl
 
 class AxisArrows():
     """Create XYZ arrows representing force vectors."""
@@ -164,8 +164,8 @@ def main() -> None:
     # VTK
     colors = vtkNamedColors()
 
-    # gripper actor | Import Gripper STL file
-    gripper_actor= create_gripper_actor(colors)
+    # stl actor | Import Sensor STL file
+    stl_actor= create_stl_actor(colors)
 
     # Arrow actors
     right_arrows = AxisArrows(colors, is_right=True).create_actors()
@@ -185,7 +185,7 @@ def main() -> None:
     renderWindowInteractor.SetRenderWindow(renderWindow)
 
     # Add the actor to the scene
-    for actor in [gripper_actor, *all_actors]:
+    for actor in [stl_actor, *all_actors]:
         renderer.AddActor(actor)
 
     # Render and interact

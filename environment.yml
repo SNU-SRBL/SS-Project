@@ -1,0 +1,21 @@
+name: SS
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - joblib
+      - numpy
+      - matplotlib
+      - scipy
+      - scikit-learn
+      - mpmath
+      - sympy
+      # Visualization
+      - vtk
+      - matplotlib
+      - pillow
+      # Communication
+      - networkx
+      - pyserial
