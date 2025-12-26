@@ -12,6 +12,7 @@ dependencies:
       - scikit-learn
       - mpmath
       - sympy
+      - pandas
       # Visualization
       - vtk
       - matplotlib

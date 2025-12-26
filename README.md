@@ -11,6 +11,7 @@ Create a conda environment using the provided `environment.yml` file:
 ```bash
 conda env create -f environment.yml
 conda activate SS
+export PYTHONPATH=$(pwd):$PYTHONPATH
 ```
 
 ### Step 2: Install PyTorch
@@ -34,7 +35,7 @@ pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0
 ### Step 1: Connect Sensors
 
 - **Hall Sensor (sensor_srbl)**: Connect to `/dev/ttyUSB0`
-- **Commercial FT Sensor**: Connect to `/dev/ttyUSB1` (optional, only required for calibration)
+- **Commercial FT Sensor (RFT60-HA01)**: Connect to `/dev/ttyUSB1` (optional, only required for calibration)
 
 ### Step 2: Verify USB Connections
 
