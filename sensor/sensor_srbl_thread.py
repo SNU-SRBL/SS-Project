@@ -40,7 +40,7 @@ class FingerSensorThread(threading.Thread):
 
 if __name__ == "__main__":
     
-    fsensor = FingerSensor(port='/dev/ttyUSB0', force=False)
+    fsensor = FingerSensor(port='COM3', force=False)
     sensor_thread = FingerSensorThread(fsensor)
     sensor_thread.start()
 

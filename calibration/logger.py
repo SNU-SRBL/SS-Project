@@ -10,9 +10,9 @@ DT = 1.0 / HZ
 
 log_id = 0
 
-sensor_ft = SensorFT(port="/dev/ttyUSB1")
+sensor_ft = SensorFT(port="COM5")
 rft = SensorFTThread(sensor_ft)
-sensor_srbl = FingerSensor(port="/dev/ttyUSB0", force=False)
+sensor_srbl = FingerSensor(port="COM3", force=False)
 hall = FingerSensorThread(sensor_srbl)
 
 rft.start()

@@ -43,7 +43,7 @@ if __name__ == "__main__":
     HZ = 100
     DT = 1.0 / HZ
     
-    sensor_ft = SensorFT(port="/dev/ttyUSB1")
+    sensor_ft = SensorFT(port="COM5")
     sensor_thread = SensorFTThread(sensor_ft)
     sensor_thread.start()
 

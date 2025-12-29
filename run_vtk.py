@@ -54,7 +54,7 @@ def create_stl_actor(colors: vtkNamedColors) -> vtkActor:
     prop.SetOpacity(0.7) # Opacity
 
     actor_stl.SetPosition(0, 0, 0)
-    actor_stl.SetOrientation(-90, 0, 0) # 0, 90, 0
+    actor_stl.SetOrientation(90, 0, 0) # 0, 90, 0
     actor_stl.SetScale(1.0, 1.0, 1.0) # Adjust the scale
 
     return actor_stl
@@ -99,10 +99,15 @@ class AxisArrows():
             actor.SetProperty(self._create_property(color))
             actors.append(actor)
 
-        actors[0].SetOrientation(0, 90, 0) # X
-        actors[1].SetOrientation(0, 0, 90) # Y
+        actors[0].SetOrientation(0, 0, 0)     # 파랑 = X (그대로)
+        actors[1].SetOrientation(0, 90, 0)    # 초록 = Y (X->Y)
+        actors[2].SetOrientation(0, 0, 90)   # 빨강 = Z (X->Z)
 
-        position = (10, 14, -10) if self.is_right else (50, -60, 0)
+
+        # actors[0].SetOrientation(0, 90, 0) # X
+        # actors[1].SetOrientation(0, 0, 90) # Y
+
+        position = (12, 2, -10) if self.is_right else (50, -60, 0)
         scale_z = -30 if self.is_right else 30
 
         for axis, actor in zip(["x", "y", "z"], actors):
@@ -159,7 +164,7 @@ class ForceCallback():
 def main() -> None:
     """Main function to launch the force visualizer."""
     # Sensor
-    fsensor = FingerSensor(port='/dev/ttyUSB0', force=True)
+    fsensor = FingerSensor(port='COM3', force=True)
 
     # VTK
     colors = vtkNamedColors()

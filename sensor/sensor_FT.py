@@ -6,7 +6,7 @@ DF = 50.0                         # Force Divider
 DT = 2000.0                       # Torque Divider
 
 class SensorFT:
-    def __init__(self, port="/dev/ttyUSB1", baudrate=921600):
+    def __init__(self, port="COM5", baudrate=921600):
         self.ser = serial.Serial(port, baudrate, timeout=0.1)
         time.sleep(1)
 
@@ -128,7 +128,7 @@ class SensorFT:
 
 if __name__ == "__main__":
     # Ensure port is correct for your system
-    sensor_ft = SensorFT(port="/dev/ttyUSB1")
+    sensor_ft = SensorFT(port="COM5")
 
     try:
         while True:

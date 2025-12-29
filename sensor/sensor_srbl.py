@@ -38,7 +38,7 @@ class MLPModel(nn.Module):
 
 class FingerSensor:
     def __init__(self, 
-        port: str = '/dev/ttyUSB0', 
+        port: str = 'COM3', 
         baudrate: int = 115200, 
         timeout: int = 1,
         hz: int = DEFAULT_HZ,
@@ -181,7 +181,7 @@ def main():
     # Call FingerSensor
     force = True
     sensor_id = 8
-    fsensor = FingerSensor(port='/dev/ttyUSB0', force=force, sensor_id=sensor_id)
+    fsensor = FingerSensor(port='COM3', force=force, sensor_id=sensor_id)
 
     try:
         while True:
